@@ -20,10 +20,13 @@ function BookItem(props) {
                 </Card.Body>
                 <Link to={'/edit/' + props.myBook._id} className='btn btn-primary'>Edit</Link>
                 
+                // Render Delete button with an onClick event to handle deletion
                 <Button variant="danger" onClick={
                     (e)=>{
+                        // Send a DELETE request to the API when the Delete button is clicked
                         axios.delete('http://localhost:4000/api/book/' +props.myBook._id)
                         .then((res)=>{
+                            // Reload the data after successful deletion
                             let reload = props.reload();
                         })
                         .catch();
