@@ -39,11 +39,12 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('book', bookSchema);
 
-//this is a promise
+//this is a promise  -  // Define a route to handle DELETE requests for deleting a book by ID
 app.delete('/api/book/:id'), async (req,res)=>{
   console.log('delete' +req.params.id);
 
-  //this is non blocking code
+  // Use the Mongoose model to find and delete a book by its ID
+  // This is non-blocking code, as it uses 'await' with an asynchronous operation
   let book = await bookModel.findByIdAndDelete(req.params.id);
   res.send(book);
 
