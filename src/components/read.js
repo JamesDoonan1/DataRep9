@@ -26,9 +26,11 @@ function Read() {
 
     //new method ...uses the same stuff from the axios.get above.
     const ReloadData = (e) => {
+        // Send a GET request to the API endpoint to fetch book data
         axios.get('http://localhost:4000/api/book')
             .then(
                 (response) => {
+                    // If the request is successful, update the state with the fetched data
                     setData(response.data)
                 }
             )
