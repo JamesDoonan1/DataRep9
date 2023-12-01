@@ -14,11 +14,11 @@ function Create() {
         " Cover: "+cover+
         " Author: "+author);
 
-        const book = {
+        const book = ({
             title:title,
             cover:cover,
             author:author
-        };
+        })
 
         axios.post('http://localhost:4000/api/book',book)
         .then()

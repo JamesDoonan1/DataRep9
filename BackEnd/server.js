@@ -37,7 +37,18 @@ const bookSchema = new mongoose.Schema({
   author:String
 })
 
-const bookModel = mongoose.model('sdfsdfsdfsdfsdfffffffffffff423', bookSchema);
+const bookModel = mongoose.model('book', bookSchema);
+
+//this is a promise
+app.delete('/api/book/:id'), async (req,res)=>{
+  console.log('delete' +req.params.id);
+
+  //this is non blocking code
+  let book = await bookModel.findByIdAndDelete(req.params.id);
+  res.send(book);
+
+}
+
 
 app.put('/api/book/:id', async(req, res)=>{
   console.log("Update: "+req.params.id);
@@ -64,7 +75,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/api/books', async(req, res)=>{
+app.get('/api/book', async(req, res)=>{
     
   let books = await bookModel.find({});
   res.json(books);

@@ -4,7 +4,8 @@ function Books(props){
 
     return props.myBooks.map(
         (book)=>{
-            return <BookItem myBook={book} key={book._id}></BookItem>
+            //invoke our method 
+            return <BookItem myBook={book} key={book._id} reload={()=>{props.Reload();}}></BookItem>
         }
     );
 
